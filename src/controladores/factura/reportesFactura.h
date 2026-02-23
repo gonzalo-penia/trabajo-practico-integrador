@@ -1,7 +1,6 @@
 #ifndef REPORTESFACTURA_H_INCLUDED
 #define REPORTESFACTURA_H_INCLUDED
 
-///REPORTE 1: TOP 3 FACTURAS QUE MAS DINERO DEJARON
 void reporteTop3FacturasMayorDinero() {
     dibujarCuadro(1,1,92,3);
     gotoxy(20,2);
@@ -16,13 +15,11 @@ void reporteTop3FacturasMayorDinero() {
         return;
     }
 
-    // CARGAR TODAS LAS FACTURAS EN UN ARRAY
     Factura* facturas = new Factura[cant];
     for(int i = 0; i < cant; i++) {
         facturas[i] = archivo.leerRegistro(i);
     }
 
-    // CONTAR SOLO FACTURAS ACTIVAS
     int cantActivas = 0;
     for(int i = 0; i < cant; i++) {
         if(facturas[i].getEstado()) {
@@ -37,7 +34,6 @@ void reporteTop3FacturasMayorDinero() {
         return;
     }
 
-    // ORDENAR POR IMPORTETOTAL (DESCENDENTE) USANDO BUBBLE SORT
     for(int i = 0; i < cant - 1; i++) {
         for(int j = i + 1; j < cant; j++) {
             if(facturas[j].getImporteTotal() > facturas[i].getImporteTotal()) {
@@ -48,7 +44,6 @@ void reporteTop3FacturasMayorDinero() {
         }
     }
 
-    // MOSTRAR ENCABEZADO
     cout << fixed << setprecision(2);
     cout << left << setw(12) << "FACTURA #"
          << setw(15) << "FECHA"
@@ -57,7 +52,6 @@ void reporteTop3FacturasMayorDinero() {
          << right << setw(15) << "IMPORTE TOTAL" << endl;
     cout << setfill('-') << setw(92) << "-" << setfill(' ') << endl;
 
-    // MOSTRAR TOP 3 FACTURAS ACTIVAS
     int mostrados = 0;
     for(int i = 0; i < cant && mostrados < 3; i++) {
         if(facturas[i].getEstado()) {
@@ -75,7 +69,6 @@ void reporteTop3FacturasMayorDinero() {
     system("pause");
 }
 
-///REPORTE 2: TOP 3 FACTURAS CON MAS ITEMS VENDIDOS
 void reporteTop3FacturasMasItems() {
     dibujarCuadro(1,1,92,3);
     gotoxy(20,2);
@@ -90,13 +83,11 @@ void reporteTop3FacturasMasItems() {
         return;
     }
 
-    // CARGAR TODAS LAS FACTURAS EN UN ARRAY
     Factura* facturas = new Factura[cant];
     int* cantidadItems = new int[cant];
 
     for(int i = 0; i < cant; i++) {
         facturas[i] = archivo.leerRegistro(i);
-        // SUMAR LA CANTIDAD TOTAL DE ITEMS (NO SOLO LA CANTIDAD DE LINEAS)
         int totalItems = 0;
         Detalle detalle = facturas[i].getDetalleVenta();
         for(int j = 0; j < detalle.getTamActual(); j++) {
@@ -105,7 +96,6 @@ void reporteTop3FacturasMasItems() {
         cantidadItems[i] = totalItems;
     }
 
-    // CONTAR SOLO FACTURAS ACTIVAS
     int cantActivas = 0;
     for(int i = 0; i < cant; i++) {
         if(facturas[i].getEstado()) {
@@ -121,15 +111,13 @@ void reporteTop3FacturasMasItems() {
         return;
     }
 
-    // ORDENAR POR CANTIDAD DE ITEMS (DESCENDENTE)
     for(int i = 0; i < cant - 1; i++) {
         for(int j = i + 1; j < cant; j++) {
             if(cantidadItems[j] > cantidadItems[i]) {
-                // SWAP CANTIDADES
                 int auxCant = cantidadItems[i];
                 cantidadItems[i] = cantidadItems[j];
                 cantidadItems[j] = auxCant;
-                // SWAP FACTURAS
+
                 Factura auxFact = facturas[i];
                 facturas[i] = facturas[j];
                 facturas[j] = auxFact;
@@ -137,7 +125,6 @@ void reporteTop3FacturasMasItems() {
         }
     }
 
-    // MOSTRAR ENCABEZADO
     cout << left << setw(12) << "FACTURA #"
          << setw(15) << "FECHA"
          << setw(25) << "CLIENTE"
@@ -145,7 +132,6 @@ void reporteTop3FacturasMasItems() {
          << right << setw(15) << "CANT. ITEMS" << endl;
     cout << setfill('-') << setw(92) << "-" << setfill(' ') << endl;
 
-    // MOSTRAR TOP 3 FACTURAS ACTIVAS
     int mostrados = 0;
     for(int i = 0; i < cant && mostrados < 3; i++) {
         if(facturas[i].getEstado()) {

@@ -1,7 +1,6 @@
 #ifndef REPORTESCLIENTE_H_INCLUDED
 #define REPORTESCLIENTE_H_INCLUDED
 
-///REPORTE 1: TOP 3 MEJORES CLIENTES ULTIMO MES (CANTIDAD COMPRAS)
 void reporteTop3ClientesUltimoMesCantidad() {
     dibujarCuadro(1,1,77,3);
     gotoxy(10,2);
@@ -17,17 +16,14 @@ void reporteTop3ClientesUltimoMesCantidad() {
         return;
     }
 
-    // CARGAR CLIENTES
     Cliente* clientes = new Cliente[cantClientes];
     archivoCli.vectorizarArchivo(clientes, cantClientes);
 
-    // ARRAY PARALELO PARA CONTAR COMPRAS DEL ULTIMO MES
     int* comprasTemp = new int[cantClientes];
     for(int i = 0; i < cantClientes; i++) {
         comprasTemp[i] = 0;
     }
 
-    // CARGAR FACTURAS Y CONTAR COMPRAS DEL ULTIMO MES
     ArchivoFactura archivoFact;
     int cantFacturas = archivoFact.contarRegistros();
 
@@ -46,7 +42,6 @@ void reporteTop3ClientesUltimoMesCantidad() {
         }
     }
 
-    // ORDENAR POR COMPRAS (DESCENDENTE)
     for(int i = 0; i < cantClientes - 1; i++) {
         for(int j = i + 1; j < cantClientes; j++) {
             if(comprasTemp[j] > comprasTemp[i]) {
@@ -61,13 +56,11 @@ void reporteTop3ClientesUltimoMesCantidad() {
         }
     }
 
-    // MOSTRAR ENCABEZADO
     cout << left << setw(8) << "ID"
          << setw(45) << "NOMBRE/RAZON SOCIAL"
          << right << setw(20) << "CANT. COMPRAS" << endl;
     cout << setfill('-') << setw(73) << "-" << setfill(' ') << endl;
 
-    // MOSTRAR TOP 3
     int mostrados = 0;
     for(int i = 0; i < cantClientes && mostrados < 3; i++) {
         if(clientes[i].getEstado() && comprasTemp[i] > 0) {
@@ -88,7 +81,6 @@ void reporteTop3ClientesUltimoMesCantidad() {
     system("pause");
 }
 
-///REPORTE 2: TOP 3 MEJORES CLIENTES HISTORICO (CANTIDAD COMPRAS)
 void reporteTop3ClientesHistoricoCantidad() {
     dibujarCuadro(1,1,77,3);
     gotoxy(10,2);
@@ -104,17 +96,14 @@ void reporteTop3ClientesHistoricoCantidad() {
         return;
     }
 
-    // CARGAR CLIENTES
     Cliente* clientes = new Cliente[cantClientes];
     archivoCli.vectorizarArchivo(clientes, cantClientes);
 
-    // ARRAY PARALELO PARA CONTAR COMPRAS DE TODO EL HISTORICO
     int* comprasTemp = new int[cantClientes];
     for(int i = 0; i < cantClientes; i++) {
         comprasTemp[i] = 0;
     }
 
-    // CARGAR FACTURAS Y CONTAR COMPRAS DE TODO EL HISTORICO
     ArchivoFactura archivoFact;
     int cantFacturas = archivoFact.contarRegistros();
 
@@ -133,7 +122,6 @@ void reporteTop3ClientesHistoricoCantidad() {
         }
     }
 
-    // ORDENAR POR COMPRAS (DESCENDENTE)
     for(int i = 0; i < cantClientes - 1; i++) {
         for(int j = i + 1; j < cantClientes; j++) {
             if(comprasTemp[j] > comprasTemp[i]) {
@@ -148,13 +136,11 @@ void reporteTop3ClientesHistoricoCantidad() {
         }
     }
 
-    // MOSTRAR ENCABEZADO
     cout << left << setw(8) << "ID"
          << setw(45) << "NOMBRE/RAZON SOCIAL"
          << right << setw(20) << "CANT. COMPRAS" << endl;
     cout << setfill('-') << setw(73) << "-" << setfill(' ') << endl;
 
-    // MOSTRAR TOP 3
     int mostrados = 0;
     for(int i = 0; i < cantClientes && mostrados < 3; i++) {
         if(clientes[i].getEstado() && comprasTemp[i] > 0) {
@@ -175,7 +161,6 @@ void reporteTop3ClientesHistoricoCantidad() {
     system("pause");
 }
 
-///REPORTE 3: TOP 3 MEJORES CLIENTES ULTIMO MES (DINERO GASTADO)
 void reporteTop3ClientesUltimoMesDinero() {
     dibujarCuadro(1,1,77,3);
     gotoxy(10,2);
@@ -190,17 +175,14 @@ void reporteTop3ClientesUltimoMesDinero() {
         return;
     }
 
-    // CARGAR CLIENTES
     Cliente* clientes = new Cliente[cantClientes];
     archivoCli.vectorizarArchivo(clientes, cantClientes);
 
-    // ARRAY PARALELO PARA SUMAR DINERO GASTADO
     float* dineroTemp = new float[cantClientes];
     for(int i = 0; i < cantClientes; i++) {
         dineroTemp[i] = 0;
     }
 
-    // CARGAR FACTURAS Y SUMAR DINERO DEL ULTIMO MES
     ArchivoFactura archivoFact;
     int cantFacturas = archivoFact.contarRegistros();
 
@@ -219,7 +201,6 @@ void reporteTop3ClientesUltimoMesDinero() {
         }
     }
 
-    // ORDENAR POR DINERO (DESCENDENTE)
     for(int i = 0; i < cantClientes - 1; i++) {
         for(int j = i + 1; j < cantClientes; j++) {
             if(dineroTemp[j] > dineroTemp[i]) {
@@ -234,14 +215,12 @@ void reporteTop3ClientesUltimoMesDinero() {
         }
     }
 
-    // MOSTRAR ENCABEZADO
     cout << fixed << setprecision(2);
     cout << left << setw(8) << "ID"
          << setw(45) << "NOMBRE/RAZON SOCIAL"
          << right << setw(20) << "DINERO GASTADO ($)" << endl;
     cout << setfill('-') << setw(73) << "-" << setfill(' ') << endl;
 
-    // MOSTRAR TOP 3
     int mostrados = 0;
     for(int i = 0; i < cantClientes && mostrados < 3; i++) {
         if(clientes[i].getEstado() && dineroTemp[i] > 0) {
@@ -262,7 +241,6 @@ void reporteTop3ClientesUltimoMesDinero() {
     system("pause");
 }
 
-///REPORTE 4: TOP 3 MEJORES CLIENTES HISTORICO (DINERO GASTADO)
 void reporteTop3ClientesHistoricoDinero() {
     dibujarCuadro(1,1,77,3);
     gotoxy(10,2);
@@ -277,17 +255,14 @@ void reporteTop3ClientesHistoricoDinero() {
         return;
     }
 
-    // CARGAR CLIENTES
     Cliente* clientes = new Cliente[cantClientes];
     archivoCli.vectorizarArchivo(clientes, cantClientes);
 
-    // ARRAY PARALELO PARA SUMAR DINERO GASTADO
     float* dineroTemp = new float[cantClientes];
     for(int i = 0; i < cantClientes; i++) {
         dineroTemp[i] = 0;
     }
 
-    // CARGAR FACTURAS Y SUMAR DINERO DE TODO EL HISTORICO
     ArchivoFactura archivoFact;
     int cantFacturas = archivoFact.contarRegistros();
 
@@ -306,7 +281,6 @@ void reporteTop3ClientesHistoricoDinero() {
         }
     }
 
-    // ORDENAR POR DINERO (DESCENDENTE)
     for(int i = 0; i < cantClientes - 1; i++) {
         for(int j = i + 1; j < cantClientes; j++) {
             if(dineroTemp[j] > dineroTemp[i]) {
@@ -321,14 +295,12 @@ void reporteTop3ClientesHistoricoDinero() {
         }
     }
 
-    // MOSTRAR ENCABEZADO
     cout << fixed << setprecision(2);
     cout << left << setw(8) << "ID"
          << setw(45) << "NOMBRE/RAZON SOCIAL"
          << right << setw(20) << "DINERO GASTADO ($)" << endl;
     cout << setfill('-') << setw(73) << "-" << setfill(' ') << endl;
 
-    // MOSTRAR TOP 3
     int mostrados = 0;
     for(int i = 0; i < cantClientes && mostrados < 3; i++) {
         if(clientes[i].getEstado() && dineroTemp[i] > 0) {

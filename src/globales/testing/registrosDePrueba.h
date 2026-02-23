@@ -39,9 +39,9 @@ void cargarDatosDePrueba(){
     ArchivoVendedor archivoVendedor;
     ArchivoContacto archivoContacto;
 
-    // =============================================
+    //
     // PROVEEDORES
-    // =============================================
+    //
 
     const char* nombresProveedores[] = {"Distribuidora Norte", "Mayorista Sur", "Importadora Este", "Logistica Central", "Insumos Oeste", "Comercial Patagonia", "Suministros Litoral", "Fabrica Nacional", "Deposito Federal", "Materiales Centro"};
     const char* callesProveedores[] = {"Av. Mitre", "Belgrano", "San Martin", "Rivadavia", "Sarmiento", "Av. Corrientes", "Lavalle", "Tucuman", "Alsina", "Moreno"};
@@ -73,9 +73,9 @@ void cargarDatosDePrueba(){
         archivoProveedor.agregarProveedor(prov);
     }
 
-    // =============================================
+    // 
     // CONTACTOS DE PROVEEDORES
-    // =============================================
+    // 
 
     for(int i = 0; i < 10; i++){
         Contacto contacto;
@@ -100,9 +100,9 @@ void cargarDatosDePrueba(){
         archivoContacto.escribirArchivo(contacto);
     }
 
-    // =============================================
+    // 
     // CLIENTES
-    // =============================================
+    //
 
     const char* nombresClientes[] = {"Juan Perez", "Maria Garcia", "Carlos Lopez", "Ana Martinez", "Pedro Gomez", "Lucia Fernandez", "Roberto Sanchez", "Valentina Torres", "Fernando Diaz", "Camila Ruiz"};
     const char* cuitsClientes[] = {"20123456781", "27234567892", "20345678903", "27456789014", "20567890125", "27678901236", "20789012347", "27890123458", "20901234569", "27012345670"};
@@ -140,9 +140,9 @@ void cargarDatosDePrueba(){
         archivoCliente.agregarCliente(cli);
     }
 
-    // =============================================
+    // 
     // CONTACTOS DE CLIENTES
-    // =============================================
+    // 
 
     for(int i = 0; i < 10; i++){
         Contacto contacto;
@@ -197,9 +197,9 @@ void cargarDatosDePrueba(){
         archivoArticulo.agregarArticulo(art);
     }
 
-    // =============================================
+    // 
     // VENDEDORES
-    // =============================================
+    // 
 
     const char* nombresVendedores[] = {"Roberto Silva", "Laura Fernandez", "Diego Torres", "Sofia Ruiz", "Martin Diaz", "Carolina Mendez", "Alejandro Paz", "Natalia Vargas", "Gonzalo Castro", "Valentina Herrera"};
     int dnisVendedores[] = {30111222, 31222333, 32333444, 33444555, 34555666, 35666777, 36777888, 37888999, 38999000, 39000111};
@@ -248,25 +248,25 @@ void cargarDatosDePrueba(){
         archivoVendedor.escribirArchivo(vend);
     }
 
-    // =============================================
+    // =
     // FACTURAS
-    // =============================================
+    // 
 
     ArchivoFactura archivoFactura;
 
-    // INDICES SOBRE LOS ARRAYS (0-BASED) PARA CADA UNA DE LAS 18 FACTURAS
+    // DATOS PARA LAS FATURAS
     int factCliente[]    = {0, 1, 2, 3, 4, 0, 1, 2, 1,   5, 6, 7, 8, 9, 5, 6, 7, 8};
     int factVendedor[]   = {0, 1, 0, 2, 3, 4, 0, 1, 4,   5, 6, 7, 8, 9, 5, 6, 7, 9};
     int factTipoCompra[] = {1, 1, 2, 1, 1, 2, 1, 1, 2,   1, 1, 2, 1, 1, 2, 1, 1, 2};
     const char* factCondPago[] = {"Efectivo", "Efectivo", "30 dias", "Efectivo", "Efectivo", "30 dias", "Efectivo", "Efectivo", "30 dias", "Efectivo", "Efectivo", "30 dias", "Efectivo", "Efectivo", "30 dias", "Efectivo", "Efectivo", "30 dias"};
 
-    // ARTICULOS POR FACTURA (INDICE 0-BASED SOBRE IDSARTICULOS, -1 = SIN SEGUNDO ARTICULO)
+    // ARTICULOS POR FACTURA 
     int factArt1[]  = {0, 1, 2, 3, 0, 1, 4, 0, 1,   5, 6, 7, 8, 9, 5, 6, 7, 9};
     int factCant1[] = {2, 1, 3, 1, 5, 2, 4, 1, 3,   3, 2, 1, 4, 2, 5, 1, 3, 2};
     int factArt2[]  = {-1, -1, -1, 4, -1, 2, -1, 3, -1,   -1, -1, 8, -1, 5, -1, 9, -1, -1};
     int factCant2[] = {0,  0,  0, 2,  0, 1,  0, 2,  0,    0,  0, 2,  0, 3,  0, 1,  0,  0};
 
-    // FECHAS DISTRIBUIDAS DESDE NOVIEMBRE 2025 HASTA ABRIL 2026
+    // FECHAS DESDE NOV 2025 HASTA ABR 2026
     int factDia[]  = { 5, 12, 20, 28,  5, 13, 22,  3, 15,   2, 10, 18, 25,  4, 14, 21,  1, 12};
     int factMes[]  = {11, 11, 11, 11, 12, 12, 12,  1,  1,   2,  2,  2,  2,  3,  3,  3,  4,  4};
     int factAnio[] = {2025, 2025, 2025, 2025, 2025, 2025, 2025, 2026, 2026, 2026, 2026, 2026, 2026, 2026, 2026, 2026, 2026, 2026};
@@ -319,12 +319,9 @@ void cargarDatosDePrueba(){
         archivoFactura.agregarRegistro(fact);
     }
 
-    // =============================================
-    // ACTUALIZACION DE PROVEEDORES Y STOCK
-    // =============================================
-    // unidadesArticulos[i] = total comprado al proveedor (stock inicial)
-    // Las facturas vendieron unidades pero ArchivoFactura no reduce el stock,
-    // por lo que hay que calcular el stock actual manualmente y actualizar.
+    // 
+    // PROVEEDORES Y STOCK
+    // 
 
     int vendidosPorArticulo[10] = {0};
     for(int i = 0; i < 18; i++){
@@ -342,18 +339,16 @@ void cargarDatosDePrueba(){
     int cantComprasProveedores[] = {3, 1, 5, 2, 4, 1, 3, 5, 2, 4};
 
     for(int i = 0; i < 10; i++){
-        // Proveedor: refleja el total de unidades compradas (stock inicial)
+        
         Proveedor prov = archivoProveedor.traerProveedor(idsProveedores[i]);
         prov.setCantidadCompras(cantComprasProveedores[i]);
         prov.setCantidadUnidades(unidadesArticulos[i]);
         archivoProveedor.actualizarProveedor(prov);
 
-        // Articulo: stock actual = comprado - vendido
         Articulo art = archivoArticulo.traerArticulo(idsArticulos[i]);
         art.setUnidades(unidadesArticulos[i] - vendidosPorArticulo[i]);
         archivoArticulo.actualizarArticulo(art);
 
-        // Vendedor: ventas realizadas segun facturas emitidas
         Vendedor vend = archivoVendedor.traerVendedor(idsVendedores[i]);
         vend.setventasRealizadas(ventasPorVendedor[i]);
         archivoVendedor.actualizarVendedor(vend);

@@ -1,7 +1,6 @@
 #ifndef REPORTESARTICULO_H_INCLUDED
 #define REPORTESARTICULO_H_INCLUDED
 
-///REPORTE 1: TOP 3 ARTICULOS MAS VENDIDOS ULTIMO MES
 void reporteTop3ArticulosMasVendidosUltimoMes() {
     dibujarCuadro(1,1,77,3);
     gotoxy(15,2);
@@ -16,7 +15,6 @@ void reporteTop3ArticulosMasVendidosUltimoMes() {
         return;
     }
 
-    // CARGAMOS LOS ARTICULOS DEL REGISTRO EN EL VECTOR articulos.
     Articulo* articulos = new Articulo[cantArticulos];
     archivoArticulo.vectorizarArchivo(articulos, cantArticulos);
 
@@ -36,7 +34,6 @@ void reporteTop3ArticulosMasVendidosUltimoMes() {
                 Item item = detalle.getItem(it);
                 int idArticulo = item.getIdArticulo();
 
-                // BUSCAR ARTICULO Y SUMAR CANTIDAD
                 for(int a = 0; a < cantArticulos; a++) {
                     if(articulos[a].getId() == idArticulo) {
                         ventasTemp[a] += item.getCantidad();
@@ -47,9 +44,7 @@ void reporteTop3ArticulosMasVendidosUltimoMes() {
         }
     }
 
-    // ORDENAR POR VENTAS (DESCENDENTE)
     for(int i = 0; i < cantArticulos - 1; i++) {
-        
         for(int j = i + 1; j < cantArticulos; j++) {
             if(ventasTemp[j] > ventasTemp[i]) {
                 int auxVentas = ventasTemp[i];
@@ -63,13 +58,11 @@ void reporteTop3ArticulosMasVendidosUltimoMes() {
         }
     }
 
-    // MOSTRAR ENCABEZADO
     cout << left << setw(8) << "ID"
          << setw(45) << "DESCRIPCION"
          << right << setw(20) << "UNIDADES VENDIDAS" << endl;
     cout << setfill('-') << setw(73) << "-" << setfill(' ') << endl;
 
-    // MOSTRAR TOP 3
     int mostrados = 0;
     for(int i = 0; i < cantArticulos && mostrados < 3; i++) {
         if(articulos[i].getEstado() && ventasTemp[i] > 0) {
@@ -90,7 +83,6 @@ void reporteTop3ArticulosMasVendidosUltimoMes() {
     system("pause");
 }
 
-///REPORTE 2: TOP 3 ARTICULOS QUE MAS GANANCIAS DEJAN
 void reporteTop3ArticulosMasGanancias() {
     dibujarCuadro(1,1,77,3);
     gotoxy(18,2);
@@ -105,15 +97,12 @@ void reporteTop3ArticulosMasGanancias() {
         return;
     }
 
-    // CARGAR ARTICULOS
     Articulo* articulos = new Articulo[cantArticulos];
     archivoArt.vectorizarArchivo(articulos, cantArticulos);
 
-    // ARRAYS PARALELOS
     int* ventasTemp = new int[cantArticulos]();
     float* gananciasTemp = new float[cantArticulos]();
 
-    // CARGAR FACTURAS Y CONTAR VENTAS (HISTORICO - SIN FILTRO DE FECHA)
     ArchivoFactura archivoFact;
     int cantFacturas = archivoFact.contarRegistros();
 
@@ -138,7 +127,6 @@ void reporteTop3ArticulosMasGanancias() {
         }
     }
 
-    // CALCULAR GANANCIAS: GANANCIA_POR_UNIDAD * UNIDADES_VENDIDAS
     for(int i = 0; i < cantArticulos; i++) {
         float costo = articulos[i].getCosto();
         int porcentajeGanancia = articulos[i].getGanancia();
@@ -146,7 +134,6 @@ void reporteTop3ArticulosMasGanancias() {
         gananciasTemp[i] = gananciaPorUnidad * ventasTemp[i];
     }
 
-    // ORDENAR POR GANANCIAS (DESCENDENTE)
     for(int i = 0; i < cantArticulos - 1; i++) {
         for(int j = i + 1; j < cantArticulos; j++) {
             if(gananciasTemp[j] > gananciasTemp[i]) {
@@ -165,7 +152,6 @@ void reporteTop3ArticulosMasGanancias() {
         }
     }
 
-    // MOSTRAR ENCABEZADO
     cout << fixed << setprecision(2);
     cout << left << setw(8) << "ID"
          << setw(40) << "DESCRIPCION"
@@ -173,7 +159,6 @@ void reporteTop3ArticulosMasGanancias() {
          << setw(18) << "GANANCIAS ($)" << endl;
     cout << setfill('-') << setw(78) << "-" << setfill(' ') << endl;
 
-    // MOSTRAR TOP 3
     int mostrados = 0;
     for(int i = 0; i < cantArticulos && mostrados < 3; i++) {
         if(articulos[i].getEstado() && gananciasTemp[i] > 0) {
@@ -196,7 +181,6 @@ void reporteTop3ArticulosMasGanancias() {
     system("pause");
 }
 
-///REPORTE 3: TOP 3 ARTICULOS MAS DIFICILES DE VENDER
 void reporteTop3ArticulosDificilVenta() {
     dibujarCuadro(1,1,77,3);
     gotoxy(18,2);
@@ -211,11 +195,9 @@ void reporteTop3ArticulosDificilVenta() {
         return;
     }
 
-    // CARGAR TODOS LOS ARTICULOS (INCLUYE ELIMINADOS LOGICAMENTE)
     Articulo* todosArticulos = new Articulo[cantArticulos];
     archivoArt.vectorizarArchivo(todosArticulos, cantArticulos);
 
-    // FILTRAR SOLO ARTICULOS ACTIVOS
     int cantActivos = 0;
     for(int i = 0; i < cantArticulos; i++) {
         if(todosArticulos[i].getEstado()) {
@@ -241,8 +223,6 @@ void reporteTop3ArticulosDificilVenta() {
     delete[] todosArticulos;
     cantArticulos = cantActivos;
 
-    // ARRAY PARALELO PARA FECHA DE ULTIMA VENTA
-    // INICIALIZAR CON FECHA MUY ANTIGUA (1/1/1900)
     Fecha* ultimaVentaTemp = new Fecha[cantArticulos];
     bool* tieneVentas = new bool[cantArticulos];
     for(int i = 0; i < cantArticulos; i++) {
@@ -250,7 +230,6 @@ void reporteTop3ArticulosDificilVenta() {
         tieneVentas[i] = false;
     }
 
-    // ITERAR FACTURAS PARA ENCONTRAR ULTIMA VENTA DE CADA ARTICULO
     ArchivoFactura archivoFact;
     int cantFacturas = archivoFact.contarRegistros();
 
@@ -269,7 +248,6 @@ void reporteTop3ArticulosDificilVenta() {
                 for(int a = 0; a < cantArticulos; a++) {
                     if(articulos[a].getId() == idArticulo) {
                         tieneVentas[a] = true;
-                        // ACTUALIZAR SI ESTA FECHA ES MAS RECIENTE
                         if(fechaFactura >= ultimaVentaTemp[a]) {
                             ultimaVentaTemp[a] = fechaFactura;
                         }
@@ -280,10 +258,8 @@ void reporteTop3ArticulosDificilVenta() {
         }
     }
 
-    // ORDENAR POR FECHA DE ULTIMA VENTA (ASCENDENTE - MAS ANTIGUA PRIMERO)
     for(int i = 0; i < cantArticulos - 1; i++) {
         for(int j = i + 1; j < cantArticulos; j++) {
-            // SI J TIENE FECHA MAS ANTIGUA QUE I, INTERCAMBIAR
             if(ultimaVentaTemp[j] <= ultimaVentaTemp[i] && !(ultimaVentaTemp[i] <= ultimaVentaTemp[j])) {
                 Fecha auxFecha = ultimaVentaTemp[i];
                 ultimaVentaTemp[i] = ultimaVentaTemp[j];
@@ -300,13 +276,11 @@ void reporteTop3ArticulosDificilVenta() {
         }
     }
 
-    // MOSTRAR ENCABEZADO
     cout << left << setw(8) << "ID"
          << setw(45) << "DESCRIPCION"
          << right << setw(20) << "ULTIMA VENTA" << endl;
     cout << setfill('-') << setw(73) << "-" << setfill(' ') << endl;
 
-    // MOSTRAR TOP 3 ARTICULOS ACTIVOS
     int mostrar = (cantArticulos < 3) ? cantArticulos : 3;
     for(int i = 0; i < mostrar; i++) {
         cout << left << setw(8) << articulos[i].getId()
@@ -327,7 +301,6 @@ void reporteTop3ArticulosDificilVenta() {
     system("pause");
 }
 
-///REPORTE 4: ARTICULOS POR AGOTARSE (STOCK < 10)
 void reporteArticulosPorAgotarse() {
     dibujarCuadro(1,1,77,3);
     gotoxy(18,2);
@@ -343,11 +316,8 @@ void reporteArticulosPorAgotarse() {
     }
 
     Articulo* articulos = new Articulo[cant];
-
-    //!!
     archivo.vectorizarArchivo(articulos, cant);
 
-    // MOSTRAR ENCABEZADO
     cout << left << setw(8) << "ID"
          << setw(50) << "DESCRIPCION"
          << right << setw(15) << "STOCK ACTUAL" << endl;
