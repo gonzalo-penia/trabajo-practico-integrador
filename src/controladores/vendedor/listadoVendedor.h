@@ -239,7 +239,6 @@ void listarVendedores(){
     ArchivoVendedor regVendedor("../../data/vendedores.dat");
     regVendedor.leerArchivo();
     cout<<"-------------------------"<<endl;
-    system("pause");
 }
 
 #endif // LISTADOVENDEDOR_H_INCLUDED

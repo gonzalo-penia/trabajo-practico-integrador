@@ -39,7 +39,6 @@ void menuProveedores(){
                     case 4: listarProveedoresPorMenorCantidadDeCompras(); break;
                     case 5: listarProveedoresPorMayorCantidadDeUnidades(); break;
                     case 6: listarProveedoresPorMenorCantidadDeUnidades(); break;
-                    case 7: listaDeProveedores(); break;
                     default: break;
                 }
                 break;
@@ -100,7 +99,6 @@ void mostrarSubMenuListarProveedores(){
     cout<<"4 - LISTAR POR CANTIDAD DE COMPRAS DE MENOR A MAYOR."<<endl;
     cout<<"5 - LISTAR POR CANTIDAD DE UNIDADES DE MAYOR A MENOR."<<endl;
     cout<<"6 - LISTAR POR CANTIDAD DE UNIDADES DE MENOR A MAYOR."<<endl;
-    cout<<"7 - LISTAR POR ORDEN EN EL QUE FUERON AGREGADOS."<<endl;
     cout<<"----------------------------"<<endl;
     cout<<"0 - VOLVER ATRAS"<<endl<<endl;
     cout<<"Digite el Nro. de la opcion que desea ejecutar y presione ENTER: ";

@@ -99,7 +99,7 @@ void mostrarSubMenuModificarCliente(){
     gotoxy(20,2);
     cout<<"MODIFICAR ATRIBUTOS DE LOS CLIENTES"<<endl<<endl;
     cout<<"1 - MODIFICAR TIPO."<<endl;
-    cout<<"2 - MODIFICAR DIRECCION/CONTACTO."<<endl;
+    cout<<"2 - MODIFICAR DIRECCION."<<endl;
     cout<<"3 - MODIFICAR CANTIDAD DE VENTAS."<<endl;
     cout<<"4 - MODIFICAR NOMBRE."<<endl;
     cout<<"----------------------------"<<endl;

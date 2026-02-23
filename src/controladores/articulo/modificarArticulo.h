@@ -9,7 +9,8 @@ void modificarDescripcion(){
     
     int id;
     listaArticulosSimplificada();
-
+    cout<<endl;
+    cout<<endl;
     cout<<"MODIFICACION DE DESCRIPCION"<<endl;
     cout<<"------------------------------------"<<endl;
 
@@ -23,6 +24,9 @@ void modificarDescripcion(){
     return;
     }
 
+    system("cls");
+    cout<<"ENCONTRAMOS UN ARTICULO"<<endl;
+    cout<<"-----------------------"<<endl;
     cout<<"USTED ELIGIO EL ARTICULO: "<<Articulo.getDescripcion()<<endl;
     cout<<"INGRESE LA NUEVA DESCRIPCION QUE SE LE ASIGNARA AL ARTICULO: "<<endl;
 
@@ -48,8 +52,10 @@ void modificarProveedor(){
     int idArticulo;
     bool proveedor_existe;
     int  id_proveedor;
-
+    cout<<endl;
+    cout<<endl;
     cout<<"MODIFICACION DE PROVEEDOR"<<endl;
+    cout<<"------------------------------------"<<endl;
 
     listaArticulosSimplificada();
 
@@ -64,7 +70,11 @@ void modificarProveedor(){
     return;
     }
 
+    system("cls");
+    cout<<"ENCONTRAMOS UN ARTICULO"<<endl;
+    cout<<"-----------------------"<<endl;
     cout<<"USTED ELIGIO EL ARTICULO: "<< Articulo.getDescripcion() <<endl;
+
 
     actualProveedor = regArchivoProveedor.traerProveedor( Articulo.getIdProveedor() );
     
@@ -115,12 +125,16 @@ void modificarGanancia(){
     manejoExcepciones( Articulo.getId() );
     return;
     }
-
+    system("cls");
     cout<<"ENCONTRAMOS UN ARTICULO"<<endl;
     cout<<"-----------------------"<<endl;
 
     cout<<"USTED ELIGIO EL ARTICULO: "<<Articulo.getDescripcion()<<endl;
 
+    cout<<"EL COSTO DE VENTA ES $"<<Articulo.getCosto()<<endl;
+    cout<<"LA GANANCIA: "<<Articulo.getGanancia()<<"%"<<endl;
+    cout<<"EL PRECIO DE VENTA ACTUAL ES: $"<<Articulo.getCosto() * (1 + Articulo.getGanancia() / 100.0)<<endl;
+    cout<<endl;
     cout<<"INGRESE LA NUEVA GANANCIA: "<<endl;
     cin>>ganancia;
 
@@ -131,6 +145,14 @@ void modificarGanancia(){
     Articulo.setUltimaActualizacionPrecio(fechaActual);
 
     ArchivoArticulo.actualizarArticulo(Articulo);
+
+    system("cls");
+    cout<<"ARTICULO ACTUALIZADO CORRECTAMENTE!"<<endl;
+    cout<<"-----------------------"<<endl;
+    cout<<"EL COSTO DE VENTA ES $"<<Articulo.getCosto()<<endl;
+    cout<<"LA NUEVA GANANCIA ES: "<<Articulo.getGanancia()<<"%"<<endl;
+    cout<<"EL NUEVO PRECIO DE VENTA ES: $"<<Articulo.getCosto() * (1 + Articulo.getGanancia() / 100.0)<<endl;
+    system("pause");
     
 }
 
@@ -144,7 +166,7 @@ void modificarCostoVenta(){
     cout<<endl;
     cout<<endl;
 
-    cout<<"INGRESE EL ID DEL ARTICULO CUYO PRECIO DE VENTA DESEA MODIFICAR:"<<endl;
+    cout<<"INGRESE EL ID DEL ARTICULO CUYO COSTO DE VENTA DESEA MODIFICAR:"<<endl;
     cin>>id;
 
     Articulo Articulo = ArchivoArticulo.traerArticulo(id);
@@ -154,9 +176,17 @@ void modificarCostoVenta(){
     return;
     }
 
+    system("cls");
+    cout<<"ENCONTRAMOS UN ARTICULO"<<endl;
+    cout<<"-----------------------"<<endl;
     cout<<"USTED ELIGIO EL ARTICULO: "<<Articulo.getDescripcion()<<endl;
+    cout<<endl;
+    cout<<"EL COSTO DE VENTA ES $"<<Articulo.getCosto()<<endl;
+    cout<<"LA GANANCIA: "<<Articulo.getGanancia()<<"%"<<endl;
+    cout<<"EL PRECIO DE VENTA ACTUAL ES: $"<<Articulo.getCosto() * (1 + Articulo.getGanancia() / 100.0)<<endl;
 
-    cout<<"INGRESE EL NUEVO PRECIO: "<<endl;
+
+    cout<<"INGRESE EL NUEVO COSTO DE VENTA: "<<endl;
     cin>>precio;
 
     Articulo.setCosto(precio);
@@ -166,5 +196,12 @@ void modificarCostoVenta(){
 
     ArchivoArticulo.actualizarArticulo(Articulo);
 
+    system("cls");
+    cout<<"ARTICULO ACTUALIZADO CORRECTAMENTE!"<<endl;
+    cout<<"-----------------------"<<endl;
+    cout<<"EL NUEVO COSTO DE VENTA ES $"<<Articulo.getCosto()<<endl;
+    cout<<"LA GANANCIA: "<<Articulo.getGanancia()<<"%"<<endl;
+    cout<<"EL NUEVO PRECIO DE VENTA ES: $"<<Articulo.getCosto() * (1 + Articulo.getGanancia() / 100.0)<<endl;
+    system("pause");
 
 }

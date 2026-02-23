@@ -12,7 +12,7 @@ void modificarTipo(){
     cout<<"MODIFICACION DE TIPO DE CLIENTE"<<endl;
     cout<<"------------------------------------"<<endl;
     cout<<endl;
-    listarClientes();
+    listarClientesResumido();
     cout<<endl;
     cout<<"INGRESE EL ID DEL CLIENTE QUE DESEA MODIFICAR"<<endl;
     cin>>id;
@@ -31,6 +31,7 @@ void modificarTipo(){
     }
 
     cout<<"SE ENCONTRO UN CLIENTE"<<endl;
+    cliente.Mostrar();
 
     cout<<"INGRESE EL NUEVO TIPO QUE SE LE ASIGNARA AL CLIENTE "<<endl;
     cout<<"(0- Sin tipo, 1-Responsable Inscripto, 2-Monotributo, 3-Exento, 4-Cons.Final): ";
@@ -59,7 +60,7 @@ void modificarDireccion(){
     cout<<"MODIFICACION DE DIRECCION"<<endl;
     cout<<"------------------------------------"<<endl;
     cout<<endl;
-    listarClientes();
+    listarClientesResumido();
     cout<<endl;
     cout<<"INGRESE EL ID DEL CLIENTE QUE DESEA MODIFICAR"<<endl;
     cin>>id;
@@ -78,8 +79,8 @@ void modificarDireccion(){
     }
 
     cout<<"SE ENCONTRO UN CLIENTE"<<endl;
-
-    system("cls");
+    cliente.Mostrar();
+    
     cout<<"INGRESE LA NUEVA DIRECCION"<<endl;
     regDireccion.Cargar();
     cliente.setDireccion(regDireccion);
@@ -102,7 +103,7 @@ void modificarCantidadVentas(){
     cout<<"MODIFICACION DE CANTIDAD DE VENTAS"<<endl;
     cout<<"------------------------------------"<<endl;
     cout<<endl;
-    listarClientes();
+    listarClientesResumido();
     cout<<endl;
     cout<<"INGRESE EL ID DEL CLIENTE QUE DESEA MODIFICAR"<<endl;
     cin>>id;
@@ -121,7 +122,7 @@ void modificarCantidadVentas(){
     }
 
     cout<<"SE ENCONTRO UN CLIENTE"<<endl;
-
+    cliente.Mostrar();
     cout<<"INGRESE LA NUEVA CANTIDAD DE VENTAS DEL CLIENTE "<<endl;
     int cantidadVentas;
     cin>>cantidadVentas;
@@ -145,7 +146,7 @@ void modificarNombreCliente(){
     cout<<"MODIFICACION DE NOMBRE"<<endl;
     cout<<"------------------------------------"<<endl;
     cout<<endl;
-    listarClientes();
+    listarClientesResumido();
     cout<<endl;
     cout<<"INGRESE EL ID DEL CLIENTE QUE DESEA MODIFICAR"<<endl;
     cin>>id;
@@ -164,7 +165,7 @@ void modificarNombreCliente(){
     }
 
     cout<<"SE ENCONTRO UN CLIENTE"<<endl;
-
+    cliente.Mostrar();
     cout<<"INGRESE EL NUEVO NOMBRE QUE SE LE ASIGNARA AL CLIENTE: "<<endl;
     char nuevoNombre[50];
     cargarCadena(nuevoNombre,50);

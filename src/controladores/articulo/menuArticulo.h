@@ -38,13 +38,13 @@ void menuArticulos(){
                 int listar;
                 mostrarSubMenuListarArticulos();
                 cin >> listar;
+                //cin.ignore(256, '\n');
                 switch (listar){
 
                     case 1: listarArticuloPorPrecioDeMayorAMenor(); break;
                     case 2: listarArticuloPorPrecioDeMenorAMayor(); break;
                     case 3: listaArticuloPorIdDeMayorAMenor(); break;
                     case 4: listaArticuloPorIdDeMenorAMayor(); break;
-                    case 5: listaArticulosSimplificada(); break;
                     default: break;
                 }
                 break;
@@ -111,7 +111,6 @@ void mostrarSubMenuListarArticulos(){
     cout<<"2 - LISTAR DE MENOR A MAYOR PRECIO."<<endl;
     cout<<"3 - ORDENAR POR ID DE MAYOR A MAYOR."<<endl;
     cout<<"4 - ORDENAR POR ID DE MENOR A MAYOR."<<endl;
-    cout<<"5 - LISTAR POR ORDEN EN EL QUE FUERON AGREGADOS."<<endl;
     cout<<"----------------------------"<<endl;
     cout<<"0 - VOLVER ATRAS"<<endl<<endl;
     cout<<"Digite el Nro. de la opcion que desea ejecutar y presione ENTER: ";
@@ -123,7 +122,7 @@ void mostrarSubMenuModificarArticulos(){
     cout<<"MODIFICAR ATRIBUTOS ARTICULOS"<<endl<<endl;
     cout<<"1 - MODIFICAR DESCRIPCION."<<endl;
     cout<<"2 - MODIFICAR PROVEEDOR."<<endl;
-    cout<<"3 - MODIFICAR PRECIO VENTA."<<endl;
+    cout<<"3 - MODIFICAR COSTO DE VENTA."<<endl;
     cout<<"4 - MODIFICAR GANANCIA."<<endl;
     cout<<"----------------------------"<<endl;
     cout<<"0 - VOLVER ATRAS"<<endl<<endl;

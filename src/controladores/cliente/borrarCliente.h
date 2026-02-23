@@ -29,7 +29,7 @@ void borrarLogicoCliente(){ //ESTA FUNCION SOLO DARA DE BAJA EL ESTADO DEL CLIEN
 
     system("cls");
     cout<<"SE ENCONTRO UN REGISTRO"<<endl;
-
+    cliente.Mostrar();
     cout<<"ESTA SEGURO QUE QUIERE ELIMINAR ESTE CLIENTE? (1-SI, 2-NO): ";
     cin>> eliminar;
     if(eliminar==1){
@@ -80,7 +80,6 @@ void borrarFisicoCliente(){ //ESTA FUNCION PONDRA TODOS LOS VALORES EN 0 DEL CLI
 
     system("cls");
     cout<<"SE ENCONTRO UN REGISTRO"<<endl;
-
     cliente.Mostrar();
     cout<<"ESTA SEGURO QUE QUIERE ELIMINAR ESTE CLIENTE? (1-SI, 2-NO)";
     cin>>opcion;
@@ -96,6 +95,7 @@ void borrarFisicoCliente(){ //ESTA FUNCION PONDRA TODOS LOS VALORES EN 0 DEL CLI
         eliminarContactosDeEntidad(id, 'C');
         cout<<"REGISTRO BORRADO DE FORMA CORRECTA"<<endl;
         cout<<"CONTACTOS ASOCIADOS ELIMINADOS"<<endl;
+        system("pause");
         }
      else
      {

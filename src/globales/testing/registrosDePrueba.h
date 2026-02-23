@@ -256,7 +256,7 @@ void cargarDatosDePrueba(){
 
     // INDICES SOBRE LOS ARRAYS (0-BASED) PARA CADA UNA DE LAS 18 FACTURAS
     int factCliente[]    = {0, 1, 2, 3, 4, 0, 1, 2, 1,   5, 6, 7, 8, 9, 5, 6, 7, 8};
-    int factVendedor[]   = {0, 1, 0, 2, 3, 4, 2, 1, 4,   5, 6, 7, 8, 9, 5, 6, 7, 9};
+    int factVendedor[]   = {0, 1, 0, 2, 3, 4, 0, 1, 4,   5, 6, 7, 8, 9, 5, 6, 7, 9};
     int factTipoCompra[] = {1, 1, 2, 1, 1, 2, 1, 1, 2,   1, 1, 2, 1, 1, 2, 1, 1, 2};
     const char* factCondPago[] = {"Efectivo", "Efectivo", "30 dias", "Efectivo", "Efectivo", "30 dias", "Efectivo", "Efectivo", "30 dias", "Efectivo", "Efectivo", "30 dias", "Efectivo", "Efectivo", "30 dias", "Efectivo", "Efectivo", "30 dias"};
 
@@ -317,6 +317,46 @@ void cargarDatosDePrueba(){
         fact.setEstado(true);
 
         archivoFactura.agregarRegistro(fact);
+    }
+
+    // =============================================
+    // ACTUALIZACION DE PROVEEDORES Y STOCK
+    // =============================================
+    // unidadesArticulos[i] = total comprado al proveedor (stock inicial)
+    // Las facturas vendieron unidades pero ArchivoFactura no reduce el stock,
+    // por lo que hay que calcular el stock actual manualmente y actualizar.
+
+    int vendidosPorArticulo[10] = {0};
+    for(int i = 0; i < 18; i++){
+        vendidosPorArticulo[factArt1[i]] += factCant1[i];
+        if(factArt2[i] >= 0){
+            vendidosPorArticulo[factArt2[i]] += factCant2[i];
+        }
+    }
+
+    int ventasPorVendedor[10] = {0};
+    for(int i = 0; i < 18; i++){
+        ventasPorVendedor[factVendedor[i]]++;
+    }
+
+    int cantComprasProveedores[] = {3, 1, 5, 2, 4, 1, 3, 5, 2, 4};
+
+    for(int i = 0; i < 10; i++){
+        // Proveedor: refleja el total de unidades compradas (stock inicial)
+        Proveedor prov = archivoProveedor.traerProveedor(idsProveedores[i]);
+        prov.setCantidadCompras(cantComprasProveedores[i]);
+        prov.setCantidadUnidades(unidadesArticulos[i]);
+        archivoProveedor.actualizarProveedor(prov);
+
+        // Articulo: stock actual = comprado - vendido
+        Articulo art = archivoArticulo.traerArticulo(idsArticulos[i]);
+        art.setUnidades(unidadesArticulos[i] - vendidosPorArticulo[i]);
+        archivoArticulo.actualizarArticulo(art);
+
+        // Vendedor: ventas realizadas segun facturas emitidas
+        Vendedor vend = archivoVendedor.traerVendedor(idsVendedores[i]);
+        vend.setventasRealizadas(ventasPorVendedor[i]);
+        archivoVendedor.actualizarVendedor(vend);
     }
 
     cout << endl;

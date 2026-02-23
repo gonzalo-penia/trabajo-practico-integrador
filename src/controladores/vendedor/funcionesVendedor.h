@@ -47,8 +47,10 @@ void buscarVendedor(){
     } else if(vendedor.getId() == -2) {
         cout << "ERROR AL ACCEDER AL ARCHIVO" << endl;
     } else {
+        system("cls");
         vendedor.Mostrar();
     }
+    system("pause");
 }
 
 Vendedor elegirVendedor(){

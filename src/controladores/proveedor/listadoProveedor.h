@@ -55,6 +55,7 @@ inline void listarProveedoresResumido() {
 }
 
 inline void listarProveedoresPorIdMayorAMenor(){
+    system("cls");
     ArchivoProveedor regArchivo("../../data/proveedores.dat");
 
     int i, j,cantidad,posMaximo;
@@ -107,6 +108,7 @@ inline void listarProveedoresPorIdMayorAMenor(){
 }
 
 inline void listarProveedoresPorIdMenorAMayor(){
+    system("cls");
     ArchivoProveedor regArchivo("../../data/proveedores.dat");
 
     int i, j,cantidad,posMinimo;
@@ -159,6 +161,7 @@ inline void listarProveedoresPorIdMenorAMayor(){
 }
 
 inline void listarProveedoresPorMayorCantidadDeCompras(){
+    system("cls");
     ArchivoProveedor regArchivo("../../data/proveedores.dat");
 
     int i, j,cantidad,posMaximo;
@@ -211,6 +214,7 @@ inline void listarProveedoresPorMayorCantidadDeCompras(){
 }
 
 inline void listarProveedoresPorMenorCantidadDeCompras(){
+    system("cls");
     ArchivoProveedor regArchivo("../../data/proveedores.dat");
 
     int i, j,cantidad,posMinimo;
@@ -263,6 +267,7 @@ inline void listarProveedoresPorMenorCantidadDeCompras(){
 }
 
 inline void listarProveedoresPorMayorCantidadDeUnidades(){
+    system("cls");
     ArchivoProveedor regArchivo("../../data/proveedores.dat");
 
     int i, j,cantidad,posMaximo;
@@ -315,6 +320,7 @@ inline void listarProveedoresPorMayorCantidadDeUnidades(){
 }
 
 inline void listarProveedoresPorMenorCantidadDeUnidades(){
+    system("cls");
     ArchivoProveedor regArchivo("../../data/proveedores.dat");
 
     int i, j,cantidad,posMinimo;

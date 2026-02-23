@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd /c dir C:Proyectossistema-de-gestionsistema-de-gestion)",
+      "Bash(echo:*)",
+      "Bash(powershell -Command \"Get-ChildItem ''C:\\\\Proyectos\\\\sistema-de-gestion\\\\sistema-de-gestion'' -Force | Select-Object Name, Attributes\")",
+      "Bash(powershell -Command:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(powershell -ExecutionPolicy Bypass -File:*)"
+    ]
+  }
+}

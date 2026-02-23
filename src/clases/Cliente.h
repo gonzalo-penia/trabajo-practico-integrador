@@ -65,6 +65,7 @@ void Cliente::Cargar(int identificador){
 }
 
 void Cliente::Mostrar(){
+    cout<<"Nombre: "<<getNombre()<<endl;
     cout<<"ID: "<<_id<<endl;
     cout<<"CUIT: "<<_cuit<<endl;
     Entidad::Mostrar();

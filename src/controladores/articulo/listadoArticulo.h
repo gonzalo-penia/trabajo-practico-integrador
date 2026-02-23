@@ -41,7 +41,7 @@ void listaArticulosSimplificada(){
         }
     }
     fclose(p);
-    system ("pause");
+    //system ("pause");
 }
 
 void listaArticulosStock(){
@@ -63,6 +63,7 @@ void listaArticulosStock(){
     }
     fclose(p);
 }
+
 void listarArticuloPorPrecioDeMayorAMenor(){
 
     system("cls");
@@ -81,6 +82,7 @@ void listarArticuloPorPrecioDeMayorAMenor(){
     if(vArticulos == nullptr)
     {
         cout << "NO SE PUDO PEDIR MEMORIA... " << endl;
+        system ("pause");
         return;
     }
 
@@ -116,8 +118,8 @@ void listarArticuloPorPrecioDeMayorAMenor(){
             vArticulos[i].Mostrar(true);
             }
     }
-
     delete [] vArticulos;
+    system ("pause");
 }
 
 void listarArticuloPorPrecioDeMenorAMayor(){

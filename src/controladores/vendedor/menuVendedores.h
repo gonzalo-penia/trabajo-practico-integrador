@@ -54,7 +54,6 @@ void menuVendedores(){
                     case 2: listarDeMenorAMayorVentasVendedor(); break;
                     case 3: listaAntiguedadMayorAMenorVendedor(); break;
                     case 4: listaAntiguedadMenorAMayorVendedor(); break;
-                    case 5: listarVendedores(); break;
                     default: break;
                 }
                 break;
@@ -115,7 +114,6 @@ void mostrarSubMenuListarVendedores(){
     cout<<"2 - LISTAR DE MENOR A MAYOR VENTAS."<<endl;
     cout<<"3 - ORDENAR POR ANTIGUEDAD DE MAYOR A MENOR."<<endl;
     cout<<"4 - ORDENAR POR ANTIGUEDAD DE MENOR A MAYOR."<<endl;
-    cout<<"5 - LISTAR POR ORDEN EN EL QUE FUERON AGREGADOS."<<endl;
     cout<<"----------------------------"<<endl;
     cout<<"0 - VOLVER ATRAS"<<endl<<endl;
     cout<<"Digite el Nro. de la opcion que desea ejecutar y presione ENTER: ";
